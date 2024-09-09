@@ -35,7 +35,6 @@ public class Admin {
     private Set<Role> roles = new HashSet<>();
 
     @ToString.Exclude
-    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ApplicantCV ApplicantCV;
 

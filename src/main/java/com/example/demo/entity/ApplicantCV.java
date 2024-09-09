@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -21,6 +19,7 @@ public class ApplicantCV {
     private String name;
     private String type;
     @Lob
-    @Type(type = "org.hibernate.type.ImageType")
+    @Type(type = "org.hibernate.type.BinaryType")
+    @JsonIgnore
     private byte[] picture;
 }

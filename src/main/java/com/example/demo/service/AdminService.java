@@ -87,7 +87,7 @@ public class AdminService {
     }
 
     public ResponseEntity<?>getApplicants(){
-        return ResponseEntity.ok().body(adminRepository.findAll());
+        return ResponseEntity.ok().body(adminRepository.getApplicants());
     }
 
     public ResponseEntity<?>getApplicantsByEMail(String uname){
