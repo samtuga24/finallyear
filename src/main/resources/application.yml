@@ -1,0 +1,34 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: create-react
+  datasource:
+    password: password
+    url: jdbc:postgresql://localhost:5432/School
+
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hpibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      enabled: true
+  http:
+    multipart:
+      enabled: true
+org:
+  apache:
+    tomcat:
+      util:
+        buf:
+          UDecoder:
+            ALLOW_ENCODED_SLASH: true
+
