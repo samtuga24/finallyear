@@ -44,7 +44,6 @@ public class AdminService {
                     });
 
             admin.setDateApplied(LocalDate.now());
-            admin.setJob(admin.getJob());
             admin.setRoles(userRole);
             admin.setPassword(bCryptPasswordEncoder.encode(admin.getPassword()));
             adminRepository.save(admin);
@@ -73,13 +72,14 @@ public class AdminService {
 
     }
 
-    public ResponseEntity<?>updateJob(String uname, Job job){
+    public ResponseEntity<?>updateJob(String uname,  Job job){
         Admin admin = adminRepository.findByUname(uname).orElse(null);
+        Set<Job> jobs = admin.getJobs();
+        jobs.add(job);
         if(admin == null){
             return ResponseEntity.ok().body("user not found");
         }
-
-        admin.setJob(job);
+        admin.setJobs(jobs);
         admin.setDateApplied(LocalDate.now());
         adminRepository.save(admin);
         return ResponseEntity.ok().body("Application successful");

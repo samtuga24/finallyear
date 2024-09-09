@@ -25,8 +25,7 @@ public class Job {
     private LocalDate deadline;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Admin admin;
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Applicant> applicants = new HashSet<>();
+
     public Job(String title, String description, String qualification, double salary, LocalDate deadline) {
         this.title = title;
         this.description = description;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Set;
 
 @RestController
 @CrossOrigin
@@ -21,7 +22,7 @@ public class AdminController {
         return adminService.addAdmin(admin);
     }
 
-    @RequestMapping( value = "update-job/{email}", method= RequestMethod.PATCH)
+    @RequestMapping( value = "update-job/{email}", method= RequestMethod.POST)
     public ResponseEntity<?>updateJob(@PathVariable("email") String email, @RequestBody Job job){
         return adminService.updateJob(email, job);
     }
