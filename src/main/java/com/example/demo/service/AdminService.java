@@ -44,6 +44,7 @@ public class AdminService {
                     });
 
             admin.setDateApplied(LocalDate.now());
+            admin.setJobStatus("none");
             admin.setRoles(userRole);
             admin.setPassword(bCryptPasswordEncoder.encode(admin.getPassword()));
             adminRepository.save(admin);
@@ -92,5 +93,18 @@ public class AdminService {
 
     public ResponseEntity<?>getApplicantsByEMail(String uname){
         return ResponseEntity.ok().body(adminRepository.findByUname(uname));
+    }
+
+    public ResponseEntity<?>updateStatus(String uname){
+        Admin admin = adminRepository.findByUname(uname).orElse(null);
+        if( admin == null){
+           return ResponseEntity.ok().body("user not found");
+        }
+        admin.setJobStatus("accepted");
+        adminRepository.save(admin);
+        return ResponseEntity.ok().body("user has been accepted");
+    }
+    public ResponseEntity<?>getAccepted(String uname){
+        return ResponseEntity.ok().body(adminRepository.getStatus(uname));
     }
 }

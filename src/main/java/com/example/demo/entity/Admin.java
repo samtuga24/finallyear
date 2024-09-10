@@ -25,6 +25,7 @@ public class Admin {
     private String password;
     private LocalDate dateApplied;
     private String phoneNumber;
+    private String jobStatus;
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Staff> staff = new HashSet<>();
 
@@ -41,12 +42,14 @@ public class Admin {
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Job> jobs = new HashSet<>();
 
-    public Admin(String fname, String lname, String uname, String password, LocalDate dateApplied, String phoneNumber) {
+    public Admin(String fname, String lname, String uname, String password, LocalDate dateApplied,
+                 String phoneNumber, String jobStatus) {
         this.fname = fname;
         this.lname = lname;
         this.uname = uname;
         this.password = password;
         this.dateApplied = dateApplied;
         this.phoneNumber = phoneNumber;
+        this.jobStatus = jobStatus;
     }
 }

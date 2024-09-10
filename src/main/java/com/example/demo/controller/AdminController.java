@@ -39,4 +39,14 @@ public class AdminController {
     public ResponseEntity<?> getApplicantByEmail(@PathVariable("email")String email){
         return adminService.getApplicantsByEMail(email);
     }
+
+    @PatchMapping("update-status/{email}")
+    public ResponseEntity<?> updateStatus(@PathVariable("email")String email){
+        return adminService.updateStatus(email);
+    }
+
+    @GetMapping("get-accepted/{email}")
+    public ResponseEntity<?> getAccepted(@PathVariable("email") String email){
+        return adminService.getAccepted(email);
+    }
 }
