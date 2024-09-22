@@ -22,15 +22,17 @@ public class Job {
     private String description;
     private String qualification;
     private double salary;
+    private String experience;
     private LocalDate deadline;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Admin admin;
 
-    public Job(String title, String description, String qualification, double salary, LocalDate deadline) {
+    public Job(String title, String description, String qualification, double salary, String experience, LocalDate deadline) {
         this.title = title;
         this.description = description;
         this.qualification = qualification;
         this.salary = salary;
+        this.experience = experience;
         this.deadline = deadline;
     }
 }
