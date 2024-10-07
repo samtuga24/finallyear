@@ -31,6 +31,11 @@ public class AdminController {
         return adminService.updateCV(email, applicantCV);
     }
 
+    @RequestMapping( value = "update/{email}", method= RequestMethod.PATCH)
+    public ResponseEntity<?> updateUser(@PathVariable("email") String email, @RequestParam("fname") String fname, @RequestParam("lname") String lname, @RequestParam("uname") String uname,@RequestParam("passport") MultipartFile passport) throws IOException {
+        return adminService.updateUsers(email, fname, lname, uname, passport);
+    }
+
     @GetMapping("get-applicants")
     public ResponseEntity<?> getApplicant(){
         return adminService.getApplicants();
@@ -42,11 +47,26 @@ public class AdminController {
 
     @PatchMapping("update-status/{email}")
     public ResponseEntity<?> updateStatus(@PathVariable("email")String email){
-        return adminService.updateStatus(email);
+        return adminService.updateJobStatus(email);
     }
 
     @GetMapping("get-accepted/{email}")
     public ResponseEntity<?> getAccepted(@PathVariable("email") String email){
         return adminService.getAccepted(email);
+    }
+
+    @GetMapping("view-all")
+    public ResponseEntity<?> viewAll(){
+        return adminService.viewAll();
+    }
+
+    @PatchMapping("update-password/{uname}")
+    public ResponseEntity<?>updatePassword(@PathVariable("uname") String uname, @RequestParam("password") String password, @RequestParam("newPass") String newPass){
+        return ResponseEntity.ok().body(adminService.updatePassword(uname,password,newPass));
+    }
+
+    @PatchMapping("status/{uname}")
+    public ResponseEntity<?>update(@PathVariable("uname") String uname){
+        return ResponseEntity.ok().body(adminService.updateStatus(uname));
     }
 }

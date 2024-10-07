@@ -17,9 +17,11 @@ public class JwtResponse {
     private String lname;
     private String phoneNumber;
     private LocalDate dateApplied;
+    private String imageName;
+    private String status;
     private List<String> roles;
 
-    public JwtResponse(String token, long id, String fname, String lname, String uname, String phoneNumber, LocalDate dateApplied, List<String> roles) {
+    public JwtResponse(String token, long id, String fname, String lname, String uname, String phoneNumber, LocalDate dateApplied, String imageName, String status, List<String> roles) {
         this.token = token;
         this.id = id;
         this.fname = fname;
@@ -27,6 +29,8 @@ public class JwtResponse {
         this.lname = lname;
         this.phoneNumber = phoneNumber;
         this.dateApplied = dateApplied;
+        this.imageName = imageName;
+        this.status = status;
         this.roles = roles;
     }
 }

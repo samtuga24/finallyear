@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,6 +27,12 @@ public class Admin {
     private LocalDate dateApplied;
     private String phoneNumber;
     private String jobStatus;
+    private String status;
+    private String imageName;
+    @ToString.Exclude
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Passport passport;
+
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Staff> staff = new HashSet<>();
 
@@ -43,7 +50,7 @@ public class Admin {
     private Set<Job> jobs = new HashSet<>();
 
     public Admin(String fname, String lname, String uname, String password, LocalDate dateApplied,
-                 String phoneNumber, String jobStatus) {
+                 String phoneNumber, String jobStatus, String status, String imageName) {
         this.fname = fname;
         this.lname = lname;
         this.uname = uname;
@@ -51,5 +58,7 @@ public class Admin {
         this.dateApplied = dateApplied;
         this.phoneNumber = phoneNumber;
         this.jobStatus = jobStatus;
+        this.status = status;
+        this.imageName = imageName;
     }
 }

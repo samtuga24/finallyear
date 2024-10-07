@@ -18,10 +18,12 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
     private LocalDate dateApplied;
     private String phoneNumber;
+    private String imageName;
+    private String status;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(long id, String fname, String lname, String uname, String password,String phoneNumber, LocalDate dateApplied,
-                            Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(long id, String fname, String lname, String uname, String password,String phoneNumber, LocalDate dateApplied, String imageName,
+                            String status, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
@@ -29,6 +31,8 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
         this.dateApplied = dateApplied;
         this.phoneNumber = phoneNumber;
+        this.imageName = imageName;
+        this.status = status;
         this.authorities = authorities;
     }
 
@@ -45,7 +49,8 @@ public class UserDetailsImpl implements UserDetails {
                 admin.getPassword(),
                 admin.getPhoneNumber(),
                 admin.getDateApplied(),
-
+                admin.getImageName(),
+                admin.getStatus(),
                 authorities
         );
     }
@@ -86,6 +91,13 @@ public class UserDetailsImpl implements UserDetails {
         return dateApplied;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
     @Override
     public boolean isAccountNonExpired() {
         return true;
